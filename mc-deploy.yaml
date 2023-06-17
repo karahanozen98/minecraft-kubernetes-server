@@ -13,7 +13,8 @@ spec:
     spec:
       containers:
         - name: minecraft
-          image: itzg/minecraft-server
+          image: itzg/minecraft-server:latest
+          imagePullPolicy: IfNotPresent
           env:
             - name: EULA
               value: "true"
@@ -24,5 +25,9 @@ spec:
             - name: SERVER_PORT
               value: "25565"
           resources:
+            limits:
+              memory: 2Gi
+            requests:
+              memory: 1.5Gi
           ports:
             - containerPort: 25565
